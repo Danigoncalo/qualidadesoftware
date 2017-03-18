@@ -31,6 +31,7 @@ public class TesteBuscaPrecoTamanho {
     driver.get(baseUrl + "/");
     
     //pagina inicial
+    HomePage paginaInicial = new HomePage();
     driver.findElement(By.id("query")).clear();
     driver.findElement(By.id("query")).sendKeys("bermudas femininas");
     driver.findElement(By.id("query")).sendKeys(Keys.ENTER);
