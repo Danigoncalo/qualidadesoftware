@@ -14,24 +14,21 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TesteBuscaPrecoTamanho {
   private WebDriver driver;
-  private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
   public void setUp() throws Exception {
-	  System.setProperty("webdriver.firefox.marionette","C:\\Users\\alu201631720\\Downloads\\geckodriver-v0.14.0-win64\\geckodriver.exe");
-    driver = new FirefoxDriver();
-    baseUrl = "https://www.enjoei.com.br/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	 Drive drive = new Drive();	 
+	 driver = drive.getDriver();
   }
 
   @Test
   public void testEBuscaPrecoTamanho() throws Exception {
-    driver.get(baseUrl + "/");
-    
     //pagina inicial
-    HomePage paginaInicial = new HomePage();
+    HomePage paginaInicial = new HomePage(driver);
+    paginaInicial.pesquisar("bermudas femininas");
+    
     driver.findElement(By.id("query")).clear();
     driver.findElement(By.id("query")).sendKeys("bermudas femininas");
     driver.findElement(By.id("query")).sendKeys(Keys.ENTER);
